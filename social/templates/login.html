@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KWICLO</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <p id="logo">KWICLO</p>
+        </div>
+        <div class="login_form">
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Username </td>
+                        <td>Password </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="uname" class="login_input"></td>
+                        <td><input type="password" name="pwd" class="login_input"></td>
+                        <td><button type="submit" class="btn-primary">Sign In</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container" id="body-div">
+    <div class="register">
+        <form class="reg_form" method="POST" action="">
+            {% csrf_token %}
+            <h1>Create an account</h1>
+            <h6>It's quick and easy</h6>
+            <input type="text" name="first_name" class="reg_name" placeholder="  First Name">
+            <input type="text" name="surname" class="reg_surname" placeholder="  Surname"><br>
+            <input type="text" name="username" class="reg_input" placeholder="  Username"><br>
+            <input type="number" class="reg_input" name="phone" placeholder="  Mobile Number"><br>
+            <input type="email" class="reg_input" name="email" placeholder="  E-mail address"><br>
+            <input type="password" class="reg_input" name="password1" placeholder="  Password"><br>
+            <input type="password" class="reg_input" name="password2" placeholder="  Confirm Password"><br>
+            <input type="text" id="datepicker" name="dob" placeholder="  Birthday"><br><br>
+            <span id="gender">Gender :&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <select name="gender">
+                <option value="male">&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
+                <option value="female">&nbsp;&nbsp;&nbsp;&nbsp;Female</option>
+                <option value="custom">&nbsp;&nbsp;&nbsp;&nbsp;Custom</option>
+            </select><br>
+            <p id="policy">By clicking Sign Up, you agree to our Terms, <span class="text-primary">Data Policy</span> and <span class="text-primary">Cookie Policy</span>.
+                You may receive SMS notifications from us and can opt out at any time.</p>
+            <button type="submit" class=" btn btn-success">Sign Up</button>
+        </form>
+        <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="image_div">
+        <h4>Kwiclo helps you connect and share with the people in your life.</h4>
+        <br>
+        <img src="{% static 'images/network3.png' %}">
+    </div>
+</div>
+
+<script src="{% static 'JS/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'JS/jquery-ui.min.js' %}"></script>
+<script src="{% static 'JS/login.js' %}"></script>
+</body>
+</html>
